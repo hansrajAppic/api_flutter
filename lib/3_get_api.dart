@@ -61,7 +61,7 @@ class _GetApi3State extends State<GetApi3> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
               const Text("Title",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-              Text(postList[index].title.toString()),
+              Text(postList[index].body.toString()),
               SizedBox(height: 5,),
              const Text("Description",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                   Text("Description"+postList[index].title.toString()),

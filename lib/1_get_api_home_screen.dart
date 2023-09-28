@@ -18,13 +18,13 @@ class _HomeScreenState extends State<HomeScreen> {
   final resposne = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
   var data = jsonDecode(resposne.body.toString());
   if(resposne.statusCode ==200){
-    postList.clear();
+     postList.clear();
     for(Map i in data){
       postList.add(PostsModel.fromJson(i));
     }
     return postList;
 
-  }else{
+   }else{
     return postList;
 
   }
@@ -36,7 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title:  const Text("api Course"),
       ),
-      body: FutureBuilder(future: getPostApi(),
+      body:Column(children: [
+       FutureBuilder(future: getPostApi(),
         builder: (context, snapshot) {
           if(!snapshot.hasData){
             return Text("loding");
@@ -56,19 +57,22 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 5,),
              const Text("Description",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                   Text("Description"+postList[index].title.toString()),
-
-                ],)
-                  
+              
                 
+                  
+              
               
 
             
-            );
+            ],)
+              );
+              
     
   });
           }
         }
 
-   ) );
+   )])
+    );
   }
 }
